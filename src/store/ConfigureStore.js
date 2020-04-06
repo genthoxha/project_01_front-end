@@ -1,11 +1,14 @@
-import {createStore, applyMiddleware} from 'redux';
-import rootReducer from '../reducers/RootReducer';
-import thunk from 'redux-thunk';
+import { createStore, combineReducers } from 'redux';
+import vehicleReducer from '../reducers/VehicleReducer';
 
-export default function configureStore() {
-    return createStore(
-        rootReducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-        applyMiddleware(thunk)
-    );
+
+
+const rootReducer = combineReducers(
+    { count: vehicleReducer }
+);
+
+const configureStore = () => {
+    return createStore(rootReducer);
 }
+
+export default configureStore;
