@@ -12,12 +12,13 @@ import { Route, Link, Switch } from "react-router-dom";
 import home from "../roots/Home";
 import login from "../roots/Login";
 import support from "../roots/Support";
-import logo from "../assets/Ubtlogo.png";
+import logo from "../assets/vehicleTrackerLogo.png";
+import "../style.css";
 
 const Header = () => {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <NavbarBrand as={Link} to="/">
           <img
             src={logo}
