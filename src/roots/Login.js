@@ -1,23 +1,21 @@
 import React from "react";
 import {Form, Button, Container} from "react-bootstrap";
 import '../components/style.css'
+import {Redirect, Router} from "react-router";
+import {Link, Route} from "react-router-dom";
 
 export default class Login extends React.Component {
 
     // state init with empty values
     state = {
         username: '',
-        password: ''
+        password: '',
     };
 
-    handleChange(event) {
-        this.setState({
-            username: event.target.value,
-        });
-    }
     handleRegistration(event) {
 
     }
+
 
     render() {
         return (
@@ -39,14 +37,18 @@ export default class Login extends React.Component {
                                 placeholder="password"
                                 onChange={p => this.setState({password: p.target.value})}/>
                         </Form.Group>
-                        <Button className="btn btn-success m-2 btn-block" type="submit" onClick={() => this.handleLogin()}>
+                        <Button className="btn btn-success m-2 btn-block" type="submit"
+                                onClick={() => this.handleLogin()}>
                             Login
                         </Button>
                     </Form>
 
-                    <Button className="btn btn-success m-2 btn-block" type="button" onClick={() => this.handleRegistartion()}>
-                        Register
-                    </Button>
+                    <Link to='/register'>
+                        <Button className="btn btn-success m-2 btn-block" type="button"
+                                onClick={() => this.handleRegistration}>
+                            Register
+                        </Button>
+                    </Link>
                 </div>
 
             </div>

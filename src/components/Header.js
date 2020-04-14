@@ -14,6 +14,7 @@ import login from "../roots/Login";
 import support from "../roots/Support";
 import logo from "../assets/vehicleTrackerLogo.png";
 import "./style.css";
+import Register from "../roots/Register";
 
 const Header = () => {
   return (
@@ -61,6 +62,7 @@ const Header = () => {
         <Route path="/" exact component={home} />
         <Route path="/support" component={support} />
         <Route path="/login" component={login} />
+        <Route path="/register" component={Register} />
       </Switch>
     </div>
   );
