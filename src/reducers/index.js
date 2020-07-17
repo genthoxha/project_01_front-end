@@ -3,6 +3,11 @@ import { reducer as formReducer } from "redux-form";
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import reportReducer from "./getReportsReducer";
+import getAllVehicleReducer from "./getAllVehicleReducer";
+import createVehicleReducer from "./createVehicleReducer";
+import deleteVehicleReducer from "./deleteVehicleReducer";
+import updateVehicleReducer from "./updateVehicleReducer";
+
 
 const allReducers = combineReducers({
   form: formReducer,
@@ -10,6 +15,13 @@ const allReducers = combineReducers({
   error: errorReducer,
   err: errorReducer,
   reports: reportReducer,
+  createVehicle: createVehicleReducer,
+  getAllVehicle : getAllVehicleReducer,
+  deleteVehicle : deleteVehicleReducer,
+  updateVehicle: updateVehicleReducer
+
+
+
 });
 
 export default allReducers;

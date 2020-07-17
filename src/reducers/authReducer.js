@@ -1,62 +1,46 @@
 import {
-  USER_LOADED,
-  USER_LOADING,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT_SUCCESS,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
+  FETCH_VEHICLES_SUCCESS,
+  FETCH_VEHICLES_FAIL,
+  FETCH_VEHICLES_PENDING,
+
+  CREATE_VEHICLE_PENDING,
+  CREATE_VEHICLE_SUCCESS,
+  CREATE_VEHICLE_FAIL,
+
+  DELETE_VEHICLE_SUCCESS,
+  DELETE_VEHICLE_FAIL,
+  DELETE_VEHICLE_PENDING, EDIT_VEHICLE_PENDING, EDIT_VEHICLE_SUCCESS, EDIT_VEHICLE_FAIL
 } from "../constants";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticated: null,
-  isLoading: true,
-  user: null,
+  pending: false,
+  data: null,
+  error: null,
+  type: "empty",
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case USER_LOADING:
+    case FETCH_VEHICLES_PENDING || CREATE_VEHICLE_PENDING || DELETE_VEHICLE_PENDING || EDIT_VEHICLE_PENDING:
       return {
         ...state,
-        isLoading: true,
+        pending: true,
+        type: action.type,
       };
-    case USER_LOADED:
+    case FETCH_VEHICLES_SUCCESS || CREATE_VEHICLE_SUCCESS || DELETE_VEHICLE_SUCCESS || EDIT_VEHICLE_SUCCESS:
       return {
         ...state,
-        isAuthenticated: true,
-        isLoading: false,
-        user: action.payload,
+        pending: false,
+        data: action.payload,
+        type: action.type,
       };
-    case LOGIN_SUCCESS:
+    case FETCH_VEHICLES_FAIL || CREATE_VEHICLE_FAIL || DELETE_VEHICLE_FAIL || EDIT_VEHICLE_FAIL:
       return {
         ...state,
-        token: action.payload.token,
-        isAuthenticated: true,
-        isLoading: false,
-        user: action.payload,
-      };
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        isAuthenticated: false,
-        isLoading: false,
-        user: action.payload,
-      };
-    case AUTH_ERROR:
-    case LOGIN_FAIL:
-    case LOGOUT_SUCCESS:
-    case REGISTER_FAIL:
-      return {
-        ...state,
-        token: null,
-        user: null,
-        isAuthenticated: false,
-        isLoading: false,
+       error: action.payload, type: action.type,
       };
     default:
       return state;
   }
 }
+/// krijoj qeto redcucers per kejt edhe te thirri apet
